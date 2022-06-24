@@ -11,11 +11,6 @@ public class Utente {
 	//COSTRUTTORI
 	public Utente(String name, String surname, String email, String password, int age) throws Exception
 	{
-			
-		
-		
-			
-		
 		//Assegno i valori dopo i controlli
 		this.name = name;
 		this.surname = surname;
@@ -25,12 +20,7 @@ public class Utente {
 		
 		this.isEmailValid();
 		this.isPasswordValid();
-		this.isAgeValid();
-		
-		
-				
-				
-		
+		this.isAgeValid();	
 	}
 
 	
@@ -115,7 +105,9 @@ public class Utente {
 	@Override
 	public String toString() 
 	{
-		return name + surname + email + password + age;
+		return 	"\n"	+ name 	+ " " 	+ surname 	+
+				"\n" 	+ email + "	"	+ password	+
+				"\n"	+ age						;
 	}
 
 	
