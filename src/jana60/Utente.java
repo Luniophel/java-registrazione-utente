@@ -11,16 +11,17 @@ public class Utente {
 	//COSTRUTTORI
 	public Utente(String name, String surname, String email, String password, int age) throws Exception
 	{
-		//Assegno i valori dopo i controlli
+		//Controllo eccezioni
+		isEmailValid(email);
+		isPasswordValid(password);
+		isAgeValid(age);		
+		
+		//Assegno i valori 
 		this.name = name;
 		this.surname = surname;
 		this.email = email;
 		this.password = password;
-		this.age = age;
-		
-		this.isEmailValid();
-		this.isPasswordValid();
-		this.isAgeValid();	
+		this.age = age;		
 	}
 
 	
@@ -79,26 +80,26 @@ public class Utente {
 	
 	//METODI
 	
-	private void isEmailValid() throws Exception
+	private void isEmailValid(String emailInput) throws Exception
 	{
 		//Eccezione di email che non contengono il carattere "@"
-				if (!email.contains("@"))
-				throw new Exception("L'indirizzo deve contenere il carattere \"@\"");
+				if (!emailInput.contains("@") || !emailInput.contains("."))
+				throw new Exception("L'indirizzo deve contenere il carattere \"@\" e un \".\" ");
 	}
 	
-	private void isPasswordValid() throws Exception
+	private void isPasswordValid(String passwordInput) throws Exception
 	{
 		//Eccezione per password con meno di 8 caratteri e più di 12 caratteri
-		if (password.length() < 8)
+		if (passwordInput.length() < 8)
 			throw new Exception("La password deve contenere almeno 8 caratteri");
-		if (password.length() > 12)
+		if (passwordInput.length() > 12)
 			throw new Exception("La password deve contenere massimo 12 caratteri");
 	}
 	
-	private void isAgeValid() throws Exception
+	private void isAgeValid(int ageInput) throws Exception
 	{
 		//Eccezione per età inferiore ai 18 anni
-		if (age < 18)
+		if (ageInput < 18)
 			throw new  Exception("Devi avere almeno 18 anni per registrarti");
 	}
 	
